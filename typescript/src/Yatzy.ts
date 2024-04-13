@@ -50,9 +50,8 @@ export default class Yatzy {
   }
 
   score_pair(): number {
-    var counts = this.countDiceByValue();
-
-    return this.getHighestValueByCount(counts, 2) * 2;
+    const counts = this.countDiceByValue();
+    return this.getScoreByHighestValueByCount(counts, 2);
   }
 
   static two_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
@@ -167,6 +166,10 @@ export default class Yatzy {
 
   private sumIfValueIs(value: number): number {
     return sum(this.dice.filter(d => d === value));
+  }
+
+  private getScoreByHighestValueByCount(counts: number[], count: number): number {
+    return this.getHighestValueByCount(counts, count) * count;
   }
 
   private getHighestValueByCount(counts: number[], count: number): number {

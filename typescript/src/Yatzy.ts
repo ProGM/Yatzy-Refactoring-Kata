@@ -51,30 +51,22 @@ export default class Yatzy {
 
   score_pair(): number {
     const counts = this.countDiceByValue();
-    return this.getScoreByHighestValueByCount(counts, 2);
+    return this.getDescendingScoresValueByCount(counts, 2, 1);
   }
 
   two_pair(): number {
     const counts = this.countDiceByValue();
-    var n = 0;
-    var score = 0;
-    for (let i = 0; i < 6; i += 1)
-      if (counts[6 - i - 1] >= 2) {
-        n++;
-        score += 6 - i;
-      }
-    if (n == 2) return score * 2;
-    else return 0;
+    return this.getDescendingScoresValueByCount(counts, 2, 2);
   }
 
   four_of_a_kind(): number {
     const counts = this.countDiceByValue();
-    return this.getScoreByHighestValueByCount(counts, 4);
+    return this.getDescendingScoresValueByCount(counts, 4, 1);
   }
 
   three_of_a_kind(): number {
     const counts = this.countDiceByValue();
-    return this.getScoreByHighestValueByCount(counts, 3);
+    return this.getDescendingScoresValueByCount(counts, 3, 1);
   }
 
   smallStraight(): number {
@@ -152,14 +144,18 @@ export default class Yatzy {
     return sum(this.dice.filter(d => d === value));
   }
 
-  private getScoreByHighestValueByCount(counts: number[], count: number): number {
-    return this.getHighestValueByCount(counts, count) * count;
+  private getDescendingScoresValueByCount(counts: number[], count: number, limit: number): number {
+    return this.getHighestValueByCount(counts, count, limit) * count;
   }
 
-  private getHighestValueByCount(counts: number[], count: number): number {
+  private getHighestValueByCount(counts: number[], count: number, limit: number): number {
+    const foundElements: number[] = [];
     for (let i = MAX_DICE_VALUE - 1; i >= 0; i--) {
       if (counts[i] >= count) {
-        return i + 1;
+        foundElements.push(i + 1);
+        if (foundElements.length === limit) {
+          return sum(foundElements);
+        }
       }
     }
 

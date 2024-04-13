@@ -39,18 +39,8 @@ export default class Yatzy {
     return this.sumIfValueIs(1);
   }
 
-  private sumIfValueIs(value: number): number {
-    return sum(this.dice.filter(d => d === value));
-  }
-
   twos(): number {
-    var sum = 0;
-    if (this.dice[0] == 2) sum += 2;
-    if (this.dice[1] == 2) sum += 2;
-    if (this.dice[2] == 2) sum += 2;
-    if (this.dice[3] == 2) sum += 2;
-    if (this.dice[4] == 2) sum += 2;
-    return sum;
+    return this.sumIfValueIs(2);
   }
 
   static threes(d1: number, d2: number, d3: number, d4: number, d5: number): number {
@@ -195,5 +185,9 @@ export default class Yatzy {
     let sum = 0;
     for (var at = 0; at < this.dice.length; at++) if (this.dice[at] == 6) sum = sum + 6;
     return sum;
+  }
+
+  private sumIfValueIs(value: number): number {
+    return sum(this.dice.filter(d => d === value));
   }
 }

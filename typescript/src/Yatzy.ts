@@ -2,6 +2,8 @@ import { DiceTally } from "./DiceTally";
 import { MAX_DICE_VALUE, MIN_DICE_VALUE } from "./constants";
 import { sum } from "./utils";
 
+const YATZY_DICE_NUMBER = 5;
+
 export default class Yatzy {
   private dice: number[];
 
@@ -97,7 +99,7 @@ export default class Yatzy {
   }
 
   private areDiceAllTheSame(tallies: DiceTally): boolean {
-    return tallies.contains(5);
+    return tallies.contains(YATZY_DICE_NUMBER);
   }
 
   private sumIfValueIs(value: number): number {

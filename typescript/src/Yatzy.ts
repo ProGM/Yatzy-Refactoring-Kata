@@ -34,14 +34,11 @@ export default class Yatzy {
   }
 
   ones(): number {
-    var sum = 0;
-    if (this.dice[0] == 1) sum++;
-    if (this.dice[1] == 1) sum++;
-    if (this.dice[2] == 1) sum++;
-    if (this.dice[3] == 1) sum++;
-    if (this.dice[4] == 1) sum++;
+    return this.sumIfValueIs(1);
+  }
 
-    return sum;
+  private sumIfValueIs(value: number): number {
+    return this.dice.filter(d => d === value).reduce((acc, curr) => acc + curr, 0);
   }
 
   static twos(d1: number, d2: number, d3: number, d4: number, d5: number): number {

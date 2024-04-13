@@ -11,13 +11,7 @@ export default class Yatzy {
   }
 
   chance(): number {
-    var total = 0;
-    total += this.dice[0];
-    total += this.dice[1];
-    total += this.dice[2];
-    total += this.dice[3];
-    total += this.dice[4];
-    return total;
+    return this.dice.reduce((acc, curr) => acc + curr, 0);
   }
 
   static yatzy(...args: number[]): number {

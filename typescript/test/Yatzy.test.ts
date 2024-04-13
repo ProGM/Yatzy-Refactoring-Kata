@@ -30,6 +30,7 @@ describe('Twos', () => {
   it('score the sum of 2s', () => {
     assert.strictEqual(4, Yatzy.twos(1, 2, 3, 2, 6));
     assert.strictEqual(10, Yatzy.twos(2, 2, 2, 2, 2));
+    assert.strictEqual(0, Yatzy.twos(3, 4, 1, 1, 6));
   });
 });
 
@@ -37,6 +38,7 @@ describe('Threes', () => {
   it('score the sum of 3s', () => {
     assert.strictEqual(6, Yatzy.threes(1, 2, 3, 2, 3));
     assert.strictEqual(12, Yatzy.threes(2, 3, 3, 3, 3));
+    assert.strictEqual(0, Yatzy.threes(2, 4, 1, 1, 6));
   });
 });
 
@@ -45,6 +47,7 @@ describe('Fours', () => {
     assert.strictEqual(12, new Yatzy(4, 4, 4, 5, 5).fours());
     assert.strictEqual(8, new Yatzy(4, 4, 5, 5, 5).fours());
     assert.strictEqual(4, new Yatzy(4, 5, 5, 5, 5).fours());
+    assert.strictEqual(0, new Yatzy(2, 3, 1, 1, 6).fours());
   });
 });
 
@@ -53,6 +56,7 @@ describe('Fives', () => {
     assert.strictEqual(10, new Yatzy(4, 4, 4, 5, 5).fives());
     assert.strictEqual(15, new Yatzy(4, 4, 5, 5, 5).fives());
     assert.strictEqual(20, new Yatzy(4, 5, 5, 5, 5).fives());
+    assert.strictEqual(0, new Yatzy(4, 3, 6, 1, 1).fives());
   });
 });
 
@@ -69,6 +73,7 @@ describe('One pair', () => {
     assert.strictEqual(6, Yatzy.score_pair(3, 4, 3, 5, 6));
     assert.strictEqual(10, Yatzy.score_pair(5, 3, 3, 3, 5));
     assert.strictEqual(12, Yatzy.score_pair(5, 3, 6, 6, 5));
+    assert.strictEqual(0, Yatzy.score_pair(5, 3, 6, 2, 1));
   });
 });
 
@@ -76,6 +81,7 @@ describe('Two pair', () => {
   it('scores the sum of the two pairs', () => {
     assert.strictEqual(16, Yatzy.two_pair(3, 3, 5, 4, 5));
     assert.strictEqual(16, Yatzy.two_pair(3, 3, 5, 5, 5));
+    assert.strictEqual(0, Yatzy.two_pair(1, 2, 3, 4, 5));
   });
 });
 
@@ -84,6 +90,7 @@ describe('Three of a kind', () => {
     assert.strictEqual(9, Yatzy.three_of_a_kind(3, 3, 3, 4, 5));
     assert.strictEqual(15, Yatzy.three_of_a_kind(5, 3, 5, 4, 5));
     assert.strictEqual(9, Yatzy.three_of_a_kind(3, 3, 3, 3, 5));
+    assert.strictEqual(0, Yatzy.three_of_a_kind(3, 2, 3, 1, 5));
   });
 });
 
@@ -91,7 +98,8 @@ describe('Four of a kind', () => {
   it('scores the sum of the four of the kind', () => {
     assert.strictEqual(12, Yatzy.four_of_a_kind(3, 3, 3, 3, 5));
     assert.strictEqual(20, Yatzy.four_of_a_kind(5, 5, 5, 4, 5));
-    assert.strictEqual(9, Yatzy.three_of_a_kind(3, 3, 3, 3, 3));
+    assert.strictEqual(12, Yatzy.four_of_a_kind(3, 3, 3, 3, 3));
+    assert.strictEqual(0, Yatzy.four_of_a_kind(3, 2, 3, 2, 3));
   });
 });
 

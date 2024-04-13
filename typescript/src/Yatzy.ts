@@ -3,6 +3,9 @@ import { MAX_DICE_VALUE, MIN_DICE_VALUE } from "./constants";
 import { sum } from "./utils";
 
 const YATZY_DICE_NUMBER = 5;
+const PAIR = 2;
+const FOUR_OF_A_KIND = 4;
+const THREE_OF_A_KIND = 3;
 
 export default class Yatzy {
   private dice: number[];
@@ -52,22 +55,22 @@ export default class Yatzy {
 
   score_pair(): number {
     const tallies = this.getDiceTally();
-    return tallies.getDescendingScoresValueByCount(2, 1);
+    return tallies.getDescendingScoresValueByCount(PAIR, 1);
   }
 
   two_pair(): number {
     const tallies = this.getDiceTally();
-    return tallies.getDescendingScoresValueByCount(2, 2);
+    return tallies.getDescendingScoresValueByCount(PAIR, 2);
   }
 
   four_of_a_kind(): number {
     const tallies = this.getDiceTally();
-    return tallies.getDescendingScoresValueByCount(4, 1);
+    return tallies.getDescendingScoresValueByCount(FOUR_OF_A_KIND, 1);
   }
 
   three_of_a_kind(): number {
     const tallies = this.getDiceTally();
-    return tallies.getDescendingScoresValueByCount(3, 1);
+    return tallies.getDescendingScoresValueByCount(THREE_OF_A_KIND, 1);
   }
 
   smallStraight(): number {
@@ -83,11 +86,11 @@ export default class Yatzy {
   fullHouse(): number {
     const tallies = this.getDiceTally();
 
-    if (!tallies.contains(3)) {
+    if (!tallies.contains(THREE_OF_A_KIND)) {
       return 0;
     }
 
-    if (!tallies.contains(2)) {
+    if (!tallies.contains(PAIR)) {
       return 0;
     }
 

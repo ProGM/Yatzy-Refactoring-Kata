@@ -71,8 +71,8 @@ export default class Yatzy {
 
   smallStraight(): number {
     const tallies = this.countDiceByValue();
-    if (tallies[0] == 1 && tallies[1] == 1 && tallies[2] == 1 && tallies[3] == 1 && tallies[4] == 1) return 15;
-    return 0;
+
+    return tallies.slice(MIN_DICE_VALUE - 1, MAX_DICE_VALUE - 2).every((t) => t === 1) ? 15 : 0;
   }
 
   largeStraight(): number {

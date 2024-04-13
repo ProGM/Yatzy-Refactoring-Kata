@@ -15,13 +15,13 @@ export default class Yatzy {
   }
 
   yatzy(): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0];
+    var counts = [0, 0, 0, 0, 0, 0];
     for (var i = 0; i != this.dice.length; ++i) {
       var die = this.dice[i];
       counts[die - 1]++;
     }
-    for (i = 0; i != 6; i++) if (counts[i] == 5) return 50;
-    return 0;
+
+    return counts.includes(5) ? 50 : 0;
   }
 
   static ones(d1: number, d2: number, d3: number, d4: number, d5: number): number {

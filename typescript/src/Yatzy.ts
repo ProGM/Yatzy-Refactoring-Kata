@@ -3,6 +3,11 @@ export default class Yatzy {
 
   constructor(d1: number, d2: number, d3: number, d4: number, d5: number) {
     this.dice = [d1, d2, d3, d4, d5];
+    for (const d of this.dice) {
+      if (d < 1 || d > 6) {
+        throw new Error(`Invalid dice value: ${d}`);
+      }
+    }
   }
 
   chance(): number {

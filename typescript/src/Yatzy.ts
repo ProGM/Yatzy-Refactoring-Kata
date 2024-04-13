@@ -54,13 +54,13 @@ export default class Yatzy {
     return this.getScoreByHighestValueByCount(counts, 2);
   }
 
-  static two_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  two_pair(): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1 - 1]++;
-    counts[d2 - 1]++;
-    counts[d3 - 1]++;
-    counts[d4 - 1]++;
-    counts[d5 - 1]++;
+    counts[this.dice[0] - 1]++;
+    counts[this.dice[1] - 1]++;
+    counts[this.dice[2] - 1]++;
+    counts[this.dice[3] - 1]++;
+    counts[this.dice[4] - 1]++;
     var n = 0;
     var score = 0;
     for (let i = 0; i < 6; i += 1)
@@ -72,11 +72,12 @@ export default class Yatzy {
     else return 0;
   }
 
-  static four_of_a_kind(_1: number, _2: number, d3: number, d4: number, d5: number): number {
+  four_of_a_kind(): number {
+    const [d1, d2, d3, d4, d5] = this.dice;
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[_1 - 1]++;
-    tallies[_2 - 1]++;
+    tallies[d1 - 1]++;
+    tallies[d2 - 1]++;
     tallies[d3 - 1]++;
     tallies[d4 - 1]++;
     tallies[d5 - 1]++;
@@ -84,7 +85,8 @@ export default class Yatzy {
     return 0;
   }
 
-  static three_of_a_kind(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  three_of_a_kind(): number {
+    const [d1, d2, d3, d4, d5] = this.dice;
     var t;
     t = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     t[d1 - 1]++;
@@ -96,7 +98,8 @@ export default class Yatzy {
     return 0;
   }
 
-  static smallStraight(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  smallStraight(): number {
+    const [d1, d2, d3, d4, d5] = this.dice;
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0];
     tallies[d1 - 1] += 1;
@@ -108,7 +111,8 @@ export default class Yatzy {
     return 0;
   }
 
-  static largeStraight(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  largeStraight(): number {
+    const [d1, d2, d3, d4, d5] = this.dice;
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0, 0];
     tallies[d1 - 1] += 1;
@@ -120,7 +124,8 @@ export default class Yatzy {
     return 0;
   }
 
-  static fullHouse(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  fullHouse(): number {
+    const [d1, d2, d3, d4, d5] = this.dice;
     var tallies;
     var _2 = false;
     var i;

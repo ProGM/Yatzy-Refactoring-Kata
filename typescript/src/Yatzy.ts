@@ -55,12 +55,7 @@ export default class Yatzy {
   }
 
   two_pair(): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[this.dice[0] - 1]++;
-    counts[this.dice[1] - 1]++;
-    counts[this.dice[2] - 1]++;
-    counts[this.dice[3] - 1]++;
-    counts[this.dice[4] - 1]++;
+    const counts = this.countDiceByValue();
     var n = 0;
     var score = 0;
     for (let i = 0; i < 6; i += 1)

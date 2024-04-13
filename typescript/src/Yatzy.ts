@@ -1,4 +1,4 @@
-import { sum } from "./utils";
+import { sum, tallies } from "./utils";
 
 const MIN_DICE_VALUE = 1;
 const MAX_DICE_VALUE = 6;
@@ -20,9 +20,9 @@ export default class Yatzy {
   }
 
   yatzy(): number {
-    var counts = this.countDiceByValue();
+    var tallies = this.countDiceByValue();
 
-    return this.areDiceAllTheSame(counts) ? 50 : 0;
+    return this.areDiceAllTheSame(tallies) ? 50 : 0;
   }
 
   ones(): number {
@@ -50,23 +50,23 @@ export default class Yatzy {
   }
 
   score_pair(): number {
-    const counts = this.countDiceByValue();
-    return this.getDescendingScoresValueByCount(counts, 2, 1);
+    const tallies = this.countDiceByValue();
+    return this.getDescendingScoresValueByCount(tallies, 2, 1);
   }
 
   two_pair(): number {
-    const counts = this.countDiceByValue();
-    return this.getDescendingScoresValueByCount(counts, 2, 2);
+    const tallies = this.countDiceByValue();
+    return this.getDescendingScoresValueByCount(tallies, 2, 2);
   }
 
   four_of_a_kind(): number {
-    const counts = this.countDiceByValue();
-    return this.getDescendingScoresValueByCount(counts, 4, 1);
+    const tallies = this.countDiceByValue();
+    return this.getDescendingScoresValueByCount(tallies, 4, 1);
   }
 
   three_of_a_kind(): number {
-    const counts = this.countDiceByValue();
-    return this.getDescendingScoresValueByCount(counts, 3, 1);
+    const tallies = this.countDiceByValue();
+    return this.getDescendingScoresValueByCount(tallies, 3, 1);
   }
 
   smallStraight(): number {
@@ -103,30 +103,25 @@ export default class Yatzy {
   }
 
   private countDiceByValue(): number[] {
-    var counts = [0, 0, 0, 0, 0, 0];
-    for (var i = 0; i != this.dice.length; ++i) {
-      var die = this.dice[i];
-      counts[die - 1]++;
-    }
-    return counts;
+    return tallies(this.dice, MAX_DICE_VALUE);
   }
 
-  private areDiceAllTheSame(counts: number[]): boolean {
-    return counts.includes(5);
+  private areDiceAllTheSame(tallies: number[]): boolean {
+    return tallies.includes(5);
   }
 
   private sumIfValueIs(value: number): number {
     return sum(this.dice.filter(d => d === value));
   }
 
-  private getDescendingScoresValueByCount(counts: number[], count: number, limit: number): number {
-    return this.getHighestValueByCount(counts, count, limit) * count;
+  private getDescendingScoresValueByCount(tallies: number[], count: number, limit: number): number {
+    return this.getHighestValueByCount(tallies, count, limit) * count;
   }
 
-  private getHighestValueByCount(counts: number[], count: number, limit: number): number {
+  private getHighestValueByCount(tallies: number[], count: number, limit: number): number {
     const foundElements: number[] = [];
     for (let i = MAX_DICE_VALUE - 1; i >= 0; i--) {
-      if (counts[i] < count) {
+      if (tallies[i] < count) {
         continue;
       }
 

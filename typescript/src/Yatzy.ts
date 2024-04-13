@@ -10,13 +10,13 @@ export default class Yatzy {
     this.dice[4] = _5;
   }
 
-  static chance(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  chance(): number {
     var total = 0;
-    total += d1;
-    total += d2;
-    total += d3;
-    total += d4;
-    total += d5;
+    total += this.dice[0];
+    total += this.dice[1];
+    total += this.dice[2];
+    total += this.dice[3];
+    total += this.dice[4];
     return total;
   }
 

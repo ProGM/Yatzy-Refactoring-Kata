@@ -4,8 +4,8 @@ import Yatzy from '../src/Yatzy';
 
 describe('Chance', () => {
   it('scores sum of all dice', () => {
-    assert.strictEqual(15, Yatzy.chance(2, 3, 4, 5, 1));
-    assert.strictEqual(16, Yatzy.chance(3, 3, 4, 5, 1));
+    assert.strictEqual(15, new Yatzy(2, 3, 4, 5, 1).chance());
+    assert.strictEqual(16, new Yatzy(3, 3, 4, 5, 1).chance());
   });
 });
 

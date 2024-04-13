@@ -22,19 +22,6 @@ export default class Yatzy {
     return this.areDiceAllTheSame(counts) ? 50 : 0;
   }
 
-  private countDiceByValue(): number[] {
-    var counts = [0, 0, 0, 0, 0, 0];
-    for (var i = 0; i != this.dice.length; ++i) {
-      var die = this.dice[i];
-      counts[die - 1]++;
-    }
-    return counts;
-  }
-
-  private areDiceAllTheSame(counts: number[]): boolean {
-    return counts.includes(5);
-  }
-
   ones(): number {
     return this.sumIfValueIs(1);
   }
@@ -45,6 +32,18 @@ export default class Yatzy {
 
   threes(): number {
     return this.sumIfValueIs(3);
+  }
+
+  fours(): number {
+    return this.sumIfValueIs(4);
+  }
+
+  fives(): number {
+    return this.sumIfValueIs(5);
+  }
+
+  sixes(): number {
+    return this.sumIfValueIs(6);
   }
 
   static score_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
@@ -156,16 +155,17 @@ export default class Yatzy {
     else return 0;
   }
 
-  fours(): number {
-    return this.sumIfValueIs(4);
+  private countDiceByValue(): number[] {
+    var counts = [0, 0, 0, 0, 0, 0];
+    for (var i = 0; i != this.dice.length; ++i) {
+      var die = this.dice[i];
+      counts[die - 1]++;
+    }
+    return counts;
   }
 
-  fives(): number {
-    return this.sumIfValueIs(5);
-  }
-
-  sixes(): number {
-    return this.sumIfValueIs(6);
+  private areDiceAllTheSame(counts: number[]): boolean {
+    return counts.includes(5);
   }
 
   private sumIfValueIs(value: number): number {

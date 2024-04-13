@@ -6,6 +6,7 @@ const YATZY_DICE_NUMBER = 5;
 const PAIR = 2;
 const FOUR_OF_A_KIND = 4;
 const THREE_OF_A_KIND = 3;
+const YATZY_SCORE = 50;
 
 export default class Yatzy {
   private dice: number[];
@@ -26,7 +27,7 @@ export default class Yatzy {
   yatzy(): number {
     var tallies = this.getDiceTally();
 
-    return this.areDiceAllTheSame(tallies) ? 50 : 0;
+    return this.areDiceAllTheSame(tallies) ? YATZY_SCORE : 0;
   }
 
   ones(): number {

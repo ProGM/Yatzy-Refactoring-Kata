@@ -9,10 +9,10 @@ export default class Yatzy {
     return this.dice.reduce((acc, curr) => acc + curr, 0);
   }
 
-  static yatzy(...args: number[]): number {
+  yatzy(): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0];
-    for (var i = 0; i != args.length; ++i) {
-      var die = args[i];
+    for (var i = 0; i != this.dice.length; ++i) {
+      var die = this.dice[i];
       counts[die - 1]++;
     }
     for (i = 0; i != 6; i++) if (counts[i] == 5) return 50;

@@ -11,9 +11,9 @@ describe('Chance', () => {
 
 describe('Yatzy', () => {
   it('scores 50', () => {
-    assert.strictEqual(50, Yatzy.yatzy(4, 4, 4, 4, 4));
-    assert.strictEqual(50, Yatzy.yatzy(6, 6, 6, 6, 6));
-    assert.strictEqual(0, Yatzy.yatzy(6, 6, 6, 6, 3));
+    assert.strictEqual(50, new Yatzy(4, 4, 4, 4, 4).yatzy());
+    assert.strictEqual(50, new Yatzy(6, 6, 6, 6, 6).yatzy());
+    assert.strictEqual(0, new Yatzy(6, 6, 6, 6, 3).yatzy());
   });
 });
 

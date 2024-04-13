@@ -1,12 +1,15 @@
 import { sum } from "./utils";
 
+const MIN_DICE_VALUE = 1;
+const MAX_DICE_VALUE = 6;
+
 export default class Yatzy {
   private dice: number[];
 
   constructor(d1: number, d2: number, d3: number, d4: number, d5: number) {
     this.dice = [d1, d2, d3, d4, d5];
     for (const d of this.dice) {
-      if (d < 1 || d > 6) {
+      if (d < MIN_DICE_VALUE || d > MAX_DICE_VALUE) {
         throw new Error(`Invalid dice value: ${d}`);
       }
     }

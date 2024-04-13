@@ -28,9 +28,9 @@ describe('Ones', () => {
 
 describe('Twos', () => {
   it('score the sum of 2s', () => {
-    assert.strictEqual(4, Yatzy.twos(1, 2, 3, 2, 6));
-    assert.strictEqual(10, Yatzy.twos(2, 2, 2, 2, 2));
-    assert.strictEqual(0, Yatzy.twos(3, 4, 1, 1, 6));
+    assert.strictEqual(4, new Yatzy(1, 2, 3, 2, 6).twos());
+    assert.strictEqual(10, new Yatzy(2, 2, 2, 2, 2).twos());
+    assert.strictEqual(0, new Yatzy(3, 4, 1, 1, 6).twos());
   });
 });
 

@@ -78,28 +78,20 @@ export default class Yatzy {
   }
 
   fullHouse(): number {
-    var _2 = false;
-    var i;
-    var _2_at = 0;
-    var _3 = false;
-    var _3_at = 0;
-
     const tallies = this.countDiceByValue();
 
-    for (i = 0; i != 6; i += 1)
-      if (tallies[i] == 2) {
-        _2 = true;
-        _2_at = i + 1;
-      }
+    const threes = tallies.indexOf(3);
+    const twos = tallies.indexOf(2);
 
-    for (i = 0; i != 6; i += 1)
-      if (tallies[i] == 3) {
-        _3 = true;
-        _3_at = i + 1;
-      }
+    if (threes === -1) {
+      return 0;
+    }
 
-    if (_2 && _3) return _2_at * 2 + _3_at * 3;
-    else return 0;
+    if (twos === -1) {
+      return 0;
+    }
+
+    return sum(this.dice);
   }
 
   private countDiceByValue(): number[] {

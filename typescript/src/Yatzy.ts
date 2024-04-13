@@ -70,11 +70,11 @@ export default class Yatzy {
   }
 
   smallStraight(): number {
-    return this.hasStraightFromTo(MIN_DICE_VALUE, MAX_DICE_VALUE - 1) ? 15 : 0;
+    return this.hasStraightFromTo(MIN_DICE_VALUE, MAX_DICE_VALUE - 1) ? sum(this.dice) : 0;
   }
 
   largeStraight(): number {
-    return this.hasStraightFromTo(MIN_DICE_VALUE + 1, MAX_DICE_VALUE) ? 20 : 0;
+    return this.hasStraightFromTo(MIN_DICE_VALUE + 1, MAX_DICE_VALUE) ? sum(this.dice) : 0;
   }
 
   fullHouse(): number {

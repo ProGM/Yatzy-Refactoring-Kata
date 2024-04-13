@@ -1,3 +1,5 @@
+import { sum } from "./utils";
+
 export default class Yatzy {
   private dice: number[];
 
@@ -11,7 +13,7 @@ export default class Yatzy {
   }
 
   chance(): number {
-    return this.dice.reduce((acc, curr) => acc + curr, 0);
+    return sum(this.dice);
   }
 
   yatzy(): number {
@@ -38,7 +40,7 @@ export default class Yatzy {
   }
 
   private sumIfValueIs(value: number): number {
-    return this.dice.filter(d => d === value).reduce((acc, curr) => acc + curr, 0);
+    return sum(this.dice.filter(d => d === value));
   }
 
   static twos(d1: number, d2: number, d3: number, d4: number, d5: number): number {

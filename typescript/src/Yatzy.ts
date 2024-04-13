@@ -70,9 +70,7 @@ export default class Yatzy {
   }
 
   smallStraight(): number {
-    const tallies = this.countDiceByValue();
-
-    return tallies.slice(MIN_DICE_VALUE - 1, MAX_DICE_VALUE - 2).every((t) => t === 1) ? 15 : 0;
+    return this.hasStraightFromTo(MIN_DICE_VALUE, MAX_DICE_VALUE - 1) ? 15 : 0;
   }
 
   largeStraight(): number {
@@ -144,14 +142,20 @@ export default class Yatzy {
   private getHighestValueByCount(counts: number[], count: number, limit: number): number {
     const foundElements: number[] = [];
     for (let i = MAX_DICE_VALUE - 1; i >= 0; i--) {
-      if (counts[i] >= count) {
-        foundElements.push(i + 1);
-        if (foundElements.length === limit) {
-          return sum(foundElements);
-        }
+      if (counts[i] < count) {
+        continue;
+      }
+
+      foundElements.push(i + 1);
+      if (foundElements.length === limit) {
+        return sum(foundElements);
       }
     }
 
     return 0;
+  }
+
+  private hasStraightFromTo(from: number, to: number): boolean {
+    return this.countDiceByValue().slice(from - 1, to - 1).every((t) => t === 1);
   }
 }

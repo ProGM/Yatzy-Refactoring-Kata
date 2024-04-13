@@ -73,16 +73,8 @@ export default class Yatzy {
   }
 
   four_of_a_kind(): number {
-    const [d1, d2, d3, d4, d5] = this.dice;
-    var tallies;
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1 - 1]++;
-    tallies[d2 - 1]++;
-    tallies[d3 - 1]++;
-    tallies[d4 - 1]++;
-    tallies[d5 - 1]++;
-    for (let i = 0; i < 6; i++) if (tallies[i] >= 4) return (i + 1) * 4;
-    return 0;
+    const counts = this.countDiceByValue();
+    return this.getScoreByHighestValueByCount(counts, 4);
   }
 
   three_of_a_kind(): number {
@@ -179,7 +171,7 @@ export default class Yatzy {
 
   private getHighestValueByCount(counts: number[], count: number): number {
     for (let i = MAX_DICE_VALUE - 1; i >= 0; i--) {
-      if (counts[i] === count) {
+      if (counts[i] >= count) {
         return i + 1;
       }
     }

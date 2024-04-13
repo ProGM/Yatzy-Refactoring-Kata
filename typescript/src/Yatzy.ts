@@ -15,13 +15,18 @@ export default class Yatzy {
   }
 
   yatzy(): number {
+    var counts = this.countDiceByValue();
+
+    return this.areDiceAllTheSame(counts) ? 50 : 0;
+  }
+
+  private countDiceByValue(): number[] {
     var counts = [0, 0, 0, 0, 0, 0];
     for (var i = 0; i != this.dice.length; ++i) {
       var die = this.dice[i];
       counts[die - 1]++;
     }
-
-    return this.areDiceAllTheSame(counts) ? 50 : 0;
+    return counts;
   }
 
   private areDiceAllTheSame(counts: number[]): boolean {

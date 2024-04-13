@@ -33,13 +33,13 @@ export default class Yatzy {
     return counts.includes(5);
   }
 
-  static ones(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  ones(): number {
     var sum = 0;
-    if (d1 == 1) sum++;
-    if (d2 == 1) sum++;
-    if (d3 == 1) sum++;
-    if (d4 == 1) sum++;
-    if (d5 == 1) sum++;
+    if (this.dice[0] == 1) sum++;
+    if (this.dice[1] == 1) sum++;
+    if (this.dice[2] == 1) sum++;
+    if (this.dice[3] == 1) sum++;
+    if (this.dice[4] == 1) sum++;
 
     return sum;
   }

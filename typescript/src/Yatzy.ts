@@ -8,10 +8,12 @@ const FOUR_OF_A_KIND = 4;
 const THREE_OF_A_KIND = 3;
 const YATZY_SCORE = 50;
 
+type DIE_VALUE = 1 | 2 | 3 | 4 | 5 | 6;
+
 export default class Yatzy {
   private dice: number[];
 
-  constructor(d1: number, d2: number, d3: number, d4: number, d5: number) {
+  constructor(d1: DIE_VALUE, d2: DIE_VALUE, d3: DIE_VALUE, d4: DIE_VALUE, d5: DIE_VALUE) {
     this.dice = [d1, d2, d3, d4, d5];
     for (const d of this.dice) {
       if (d < MIN_DICE_VALUE || d > MAX_DICE_VALUE) {

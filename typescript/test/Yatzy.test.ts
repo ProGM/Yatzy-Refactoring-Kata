@@ -128,8 +128,8 @@ describe('Full house', () => {
 
 describe('Data validation', () => {
   it('accepts only numbers between 1 and 6', () => {
-    assert.throws(() => new Yatzy(1, 2, 3, 4, 7), Error, 'Invalid dice value: 7');
-    assert.throws(() => new Yatzy(1, 2, 3, 4, 0), Error, 'Invalid dice value: 0');
-    assert.throws(() => new Yatzy(1, -100, 3, 4, 6), Error, 'Invalid dice value: -100');
+    assert.throws(() => new Yatzy(1, 2, 3, 4, 7 as any), Error, 'Invalid dice value: 7');
+    assert.throws(() => new Yatzy(1, 2, 3, 4, 0 as any), Error, 'Invalid dice value: 0');
+    assert.throws(() => new Yatzy(1, -100 as any, 3, 4, 6), Error, 'Invalid dice value: -100');
   });
 });

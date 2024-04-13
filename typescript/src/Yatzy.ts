@@ -21,7 +21,11 @@ export default class Yatzy {
       counts[die - 1]++;
     }
 
-    return counts.includes(5) ? 50 : 0;
+    return this.areDiceAllTheSame(counts) ? 50 : 0;
+  }
+
+  private areDiceAllTheSame(counts: number[]): boolean {
+    return counts.includes(5);
   }
 
   static ones(d1: number, d2: number, d3: number, d4: number, d5: number): number {

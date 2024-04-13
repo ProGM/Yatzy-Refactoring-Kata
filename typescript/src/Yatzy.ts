@@ -47,12 +47,7 @@ export default class Yatzy {
   }
 
   score_pair(): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[this.dice[0] - 1]++;
-    counts[this.dice[1] - 1]++;
-    counts[this.dice[2] - 1]++;
-    counts[this.dice[3] - 1]++;
-    counts[this.dice[4] - 1]++;
+    var counts = this.countDiceByValue();
     var at;
     for (at = 0; at != 6; at++) if (counts[6 - at - 1] >= 2) return (6 - at) * 2;
     return 0;

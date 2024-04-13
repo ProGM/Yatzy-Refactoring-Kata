@@ -78,20 +78,13 @@ export default class Yatzy {
   }
 
   fullHouse(): number {
-    const [d1, d2, d3, d4, d5] = this.dice;
-    var tallies;
     var _2 = false;
     var i;
     var _2_at = 0;
     var _3 = false;
     var _3_at = 0;
 
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1 - 1] += 1;
-    tallies[d2 - 1] += 1;
-    tallies[d3 - 1] += 1;
-    tallies[d4 - 1] += 1;
-    tallies[d5 - 1] += 1;
+    const tallies = this.countDiceByValue();
 
     for (i = 0; i != 6; i += 1)
       if (tallies[i] == 2) {

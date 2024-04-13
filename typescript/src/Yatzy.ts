@@ -2,12 +2,7 @@ export default class Yatzy {
   private dice: number[];
 
   constructor(d1: number, d2: number, d3: number, d4: number, d5: number) {
-    this.dice = [];
-    this.dice[0] = d1;
-    this.dice[1] = d2;
-    this.dice[2] = d3;
-    this.dice[3] = d4;
-    this.dice[4] = d5;
+    this.dice = [d1, d2, d3, d4, d5];
   }
 
   chance(): number {
